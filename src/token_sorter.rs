@@ -100,7 +100,6 @@ mod tests {
 
         let count = get_lines_count();
 
-        // first line
         let file = File::open(OUT_PATH).unwrap();
         let lines = io::BufReader::new(&file).lines();
 
@@ -141,7 +140,6 @@ mod tests {
 
         let count = get_lines_count();
 
-        // first line
         let file = File::open(OUT_PATH).unwrap();
         let lines = io::BufReader::new(&file).lines();
 
