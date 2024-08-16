@@ -109,7 +109,6 @@ mod tests {
         };
 
         for (i, line) in lines.enumerate() {
-            // first line
             if i == 0 {
                 let name_and_address: NameAndAddress = parse_line(&line.unwrap().as_str());
                 assert_eq!(name_and_address.name, "Amp");
@@ -118,7 +117,6 @@ mod tests {
                     "0xfF20817765cB7f73d4bde2e66e067E58D11095C2"
                 );
             } else if i == count - 1 {
-                // last line
                 let name_and_address: NameAndAddress = parse_line(line.unwrap().as_str());
                 assert_eq!(name_and_address.name, "hoge.finance");
                 assert_eq!(
@@ -149,7 +147,6 @@ mod tests {
         };
 
         for (i, line) in lines.enumerate() {
-            // first line
             if i == 0 {
                 let name_and_address: NameAndAddress = parse_line(line.unwrap().as_str());
                 assert_eq!(name_and_address.name, "Reef.finance");
@@ -158,7 +155,6 @@ mod tests {
                     "0xFE3E6a25e6b192A42a44ecDDCd13796471735ACf"
                 );
             } else if i == count - 1 {
-                // last line
                 let name_and_address: NameAndAddress = parse_line(line.unwrap().as_str());
                 assert_eq!(name_and_address.name, "FalconSwap Token");
                 assert_eq!(
