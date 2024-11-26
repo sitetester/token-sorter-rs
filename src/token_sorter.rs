@@ -65,13 +65,11 @@ impl TokenSorter {
 }
 
 #[allow(dead_code)]
-const IN_PATH: &str = "./data/test_in";
-#[allow(dead_code)]
-const OUT_PATH: &str = "./data/test_out";
+const IN_PATH: &str = "./data/in";
 
 #[cfg(test)]
 mod tests {
-    use crate::token_sorter::{NameAndAddress, TokenSorter, IN_PATH, OUT_PATH};
+    use crate::token_sorter::{NameAndAddress, TokenSorter, IN_PATH};
     use crate::{SORT_FIELD_ADDRESS, SORT_FIELD_NAME};
     use std::fs::File;
     use std::io;
@@ -91,6 +89,8 @@ mod tests {
 
     #[test]
     fn test_sort_by_name() {
+        const OUT_PATH: &str = "./data/test_out_sort_by_name";
+
         let mut ts = TokenSorter {
             in_path: IN_PATH.to_string(),
             out_path: OUT_PATH.to_string(),
@@ -98,7 +98,7 @@ mod tests {
         };
         ts.sort().unwrap();
 
-        let count = get_lines_count();
+        let count = get_lines_count(OUT_PATH);
 
         let file = File::open(OUT_PATH).unwrap();
         let lines = io::BufReader::new(&file).lines();
@@ -129,6 +129,8 @@ mod tests {
 
     #[test]
     fn test_sort_by_address() {
+        const OUT_PATH: &str = "./data/test_out_sort_by_address";
+
         let mut ts = TokenSorter {
             in_path: IN_PATH.to_string(),
             out_path: OUT_PATH.to_string(),
@@ -136,7 +138,7 @@ mod tests {
         };
         ts.sort().unwrap();
 
-        let count = get_lines_count();
+        let count = get_lines_count(OUT_PATH);
 
         let file = File::open(OUT_PATH).unwrap();
         let lines = io::BufReader::new(&file).lines();
@@ -165,8 +167,8 @@ mod tests {
         }
     }
 
-    fn get_lines_count() -> usize {
-        let file = File::open(OUT_PATH).unwrap();
+    fn get_lines_count(out_path: &str) -> usize {
+        let file = File::open(out_path).unwrap();
         io::BufReader::new(&file).lines().count()
     }
 }
